@@ -87,17 +87,29 @@ const TextRenderer: CellRenderer = (value, _row, _column, _t) => {
   return String(value)
 }
 
-const CountRenderer: CellRenderer = (value, _row, _column, t) => {
-  if (Array.isArray(value)) {
-    const count = value.length
-    return t("general.items", { count })
+const CountRenderer: CellRenderer = (value, row, column, t) => {
+  let resolvedValue = value
+  const listField = column?.computed?.metadata?.list_field
+  const showItemsLabel = column?.computed?.metadata?.show_items_label === true
+
+  if (listField) {
+    const relation = row[listField]
+    resolvedValue = Array.isArray(relation) ? relation.length : relation
   }
 
-  if (typeof value === "number") {
-    return t("general.items", { count: value })
+  if (Array.isArray(resolvedValue)) {
+    return showItemsLabel
+      ? t("general.items", { count: resolvedValue.length })
+      : resolvedValue.length
   }
 
-  return t("general.items", { count: 0 })
+  if (typeof resolvedValue === "number") {
+    return showItemsLabel
+      ? t("general.items", { count: resolvedValue })
+      : resolvedValue
+  }
+
+  return showItemsLabel ? t("general.items", { count: 0 }) : 0
 }
 
 // TODO: if we expect users to use this renderer for their statuses, we need to provide a way for them to pass some
@@ -616,6 +628,9 @@ export function getCellRenderer(
   }
 }
 
+/**
+ * Register a cell renderer for a render mode in the global registry.
+ */
 export function registerCellRenderer(
   type: RenderMode,
   def: CellRendererDefinition
