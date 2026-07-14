@@ -1,5 +1,14 @@
 # @medusajs/file-s3
 
+## 2.18.0
+
+### Patch Changes
+
+- [#15811](https://github.com/medusajs/medusa/pull/15811) [`72db6e821fa97aa4bec512e94a77f1245a5d2f3b`](https://github.com/medusajs/medusa/commit/72db6e821fa97aa4bec512e94a77f1245a5d2f3b) Thanks [@BIGSUS24](https://github.com/BIGSUS24)! - Fix binary file (image/PDF) upload corruption: decode upload content based on MIME type instead of always falling back to UTF-8, which re-encoded bytes > 127 and corrupted binary files
+
+- Updated dependencies [[`513c01a5a7f587cb52c92677e2379e54bd990361`](https://github.com/medusajs/medusa/commit/513c01a5a7f587cb52c92677e2379e54bd990361)]:
+  - @medusajs/framework@2.18.0
+
 ## 2.17.2
 
 ### Patch Changes

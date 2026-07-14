@@ -1,5 +1,14 @@
 # @medusajs/payment
 
+## 2.18.0
+
+### Patch Changes
+
+- [#15990](https://github.com/medusajs/medusa/pull/15990) [`935a14c0098580a2b6ef8af11321e931c8ac80da`](https://github.com/medusajs/medusa/commit/935a14c0098580a2b6ef8af11321e931c8ac80da) Thanks [@shahednasser](https://github.com/shahednasser)! - fix(utils): apply select in strategy for single entity fetches
+
+- Updated dependencies [[`513c01a5a7f587cb52c92677e2379e54bd990361`](https://github.com/medusajs/medusa/commit/513c01a5a7f587cb52c92677e2379e54bd990361)]:
+  - @medusajs/framework@2.18.0
+
 ## 2.17.2
 
 ### Patch Changes
