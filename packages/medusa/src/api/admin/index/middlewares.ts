@@ -54,7 +54,6 @@ export const adminIndexRoutesMiddlewares: MiddlewareRoute[] = [
     method: ["POST"],
     matcher: "/admin/index/sync",
     middlewares: [
-      authenticate("user", ["session", "bearer", "api-key"]),
       isIndexEnabledMiddleware,
       validateAndTransformBody(AdminIndexSyncPayload),
     ],
